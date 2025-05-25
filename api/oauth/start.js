@@ -5,5 +5,7 @@ export default function handler(req, res) {
 
   const authUrl = `https://airtable.com/oauth2/v1/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code&scope=${encodeURIComponent(scope)}`;
 
-  res.redirect(authUrl);
+  // Show debug URL instead of redirecting
+  res.setHeader("Content-Type", "text/plain");
+  res.send("🔍 Airtable Auth URL:\\n\\n" + authUrl);
 }
